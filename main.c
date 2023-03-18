@@ -1,8 +1,7 @@
-//NOM prénom étudiant 1 :
-//NOM prénom étudiant 2 :
+
 
 #include "SDL.h"
-#include "maSDL.h"    //bibliothèque avec des fonction d'affichage pour le jeu 2048
+#include "maSDL.h"    //bibliothÃ¨que avec des fonction d'affichage pour le jeu 2048
 #include "clashloyal.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +25,7 @@ int main(int argc, char* argv[])
         SDL_WINDOW_SHOWN
     );
 
-    SDL_Surface* pWinSurf = SDL_GetWindowSurface(pWindow);  //le sprite qui couvre tout l'écran
+    SDL_Surface* pWinSurf = SDL_GetWindowSurface(pWindow);  //le sprite qui couvre tout l'Ã©cran
     SDL_Surface* pSpriteTour = SDL_LoadBMP("./data/Tour.bmp");  //indice 0 dans tabSprite (via l'enum TuniteDuJeu)
     SDL_Surface* pSpriteTourRoi = SDL_LoadBMP("./data/TourRoi.bmp"); //indice 1
     SDL_Surface* pSpriteArcher = SDL_LoadBMP("./data/Archer.bmp"); //indice 2
@@ -38,12 +37,12 @@ int main(int argc, char* argv[])
     SDL_Surface* pSpritePont = SDL_LoadBMP("./data/Pont.bmp"); //indice 8 idem
     SDL_Surface* pSpriteTerre = SDL_LoadBMP("./data/Terre.bmp"); //indice 9 idem
 
-    // ASTUCE : on stocke le sprite d'une unité à l'indice de son nom dans le type enum TuniteDuJeu, dans le tableau TabSprite
-    // SAUF pour l'Eau, l''herbe et le pont qui apparaitront en l absence d'unité (NULL dans le plateau) et en foction de certains indices x,y définissant le chemin central
+    // ASTUCE : on stocke le sprite d'une unitÃ© Ã  l'indice de son nom dans le type enum TuniteDuJeu, dans le tableau TabSprite
+    // SAUF pour l'Eau, l''herbe et le pont qui apparaitront en l absence d'unitÃ© (NULL dans le plateau) et en foction de certains indices x,y dÃ©finissant le chemin central
     SDL_Surface* TabSprite[10]={pSpriteTour,pSpriteTourRoi,pSpriteArcher,pSpriteChevalier,pSpriteDragon,pSpriteGargouille,pSpriteEau,pSpriteHerbe,pSpritePont,pSpriteTerre};
 
 
-    if ( pSpriteTour )  //si le permier sprite a bien été chargé, on suppose que les autres aussi
+    if ( pSpriteTour )  //si le permier sprite a bien Ã©tÃ© chargÃ©, on suppose que les autres aussi
     {
         TplateauJeu jeu = AlloueTab2D(LARGEURJEU,HAUTEURJEU);
         initPlateauAvecNULL(jeu,LARGEURJEU,HAUTEURJEU);
@@ -76,7 +75,7 @@ int main(int argc, char* argv[])
        AjouterUnite(&P2,creeTour(5,3)) ;
        AjouterUnite(&P1,creeTour(5,15) );
 
-// Test de l'uniter qui longe la rivière
+// Test de l'uniter qui longe la riviÃ¨re
 //        AjouterUnite(&P2,creeChevalier(0,8));
 
 
@@ -88,7 +87,7 @@ int main(int argc, char* argv[])
         int elixirPlayer2 = 5;
         int tourMana=0;
 
-        int i = 0; // Permet de ralentir le jeu ( aucune modif à faire )
+        int i = 0; // Permet de ralentir le jeu ( aucune modif Ã  faire )
 
 
          // boucle principale du jeu
@@ -107,7 +106,7 @@ int main(int argc, char* argv[])
                 if (i == 1) // Permet de ralentir le jeu ( vous pouvez modifiez tant que i > 0)
                 {
 
-                        while ( temp->suiv != NULL) // Verifie qu'aucune unité ne soit morte sinon elle est supprimée
+                        while ( temp->suiv != NULL) // Verifie qu'aucune unitÃ© ne soit morte sinon elle est supprimÃ©e
                         {
                             if (temp->pdata->pointsDeVie == 0)
                             {
@@ -116,7 +115,7 @@ int main(int argc, char* argv[])
                             }
                             temp = temp->suiv ;
                         }
-                        while ( temp2->suiv != NULL) // Verifie qu'aucune unité ne soit morte sinon elle est supprimée
+                        while ( temp2->suiv != NULL) // Verifie qu'aucune unitÃ© ne soit morte sinon elle est supprimÃ©e
                         {
                             if (temp2->pdata->pointsDeVie == 0)
                             {
@@ -150,7 +149,7 @@ int main(int argc, char* argv[])
                                 cont = 0;
 
                         }
-                        else printf("|Ca continue|\n");  // Pas de Roi Mort donc ça continue
+                        else printf("|Ca continue|\n");  // Pas de Roi Mort donc Ã§a continue
                         i = 0 ;
 
                         if (spawnJoueur1 ==1)
@@ -207,11 +206,11 @@ int main(int argc, char* argv[])
                 /*                                                                     */
                 // FIN DE VOS APPELS
                 /***********************************************************************/
-                //affichage du jeu à chaque tour
+                //affichage du jeu Ã  chaque tour
                 efface_fenetre(pWinSurf);
                 prepareAllSpriteDuJeu(jeu,LARGEURJEU,HAUTEURJEU,TabSprite,pWinSurf);
                 maj_fenetre(pWindow);
-                SDL_Delay(150);  //valeur du délai à modifier éventuellement
+                SDL_Delay(150);  //valeur du dÃ©lai Ã  modifier Ã©ventuellement
 
                 //LECTURE DE CERTAINES TOUCHES POUR LANCER LES RESTAURATIONS ET SAUVEGARDES
                 const Uint8* pKeyStates = SDL_GetKeyboardState(NULL);
@@ -303,7 +302,7 @@ int main(int argc, char* argv[])
         }
         //fin boucle du jeu
 
-        SDL_FreeSurface(pSpriteTour); // Libération de la ressource occupée par le sprite
+        SDL_FreeSurface(pSpriteTour); // LibÃ©ration de la ressource occupÃ©e par le sprite
         SDL_FreeSurface(pSpriteTourRoi);
         SDL_FreeSurface(pSpriteArcher);
         SDL_FreeSurface(pSpriteChevalier);
@@ -316,7 +315,7 @@ int main(int argc, char* argv[])
     }
     else
     {
-        fprintf(stdout,"Échec de chargement du sprite (%s)\n",SDL_GetError());
+        fprintf(stdout,"Ã‰chec de chargement du sprite (%s)\n",SDL_GetError());
     }
 
     SDL_DestroyWindow(pWindow);
